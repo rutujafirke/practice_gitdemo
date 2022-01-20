@@ -1,0 +1,420 @@
+Microsoft Windows [Version 10.0.19042.508]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\user>git config --global user.name "rutujafirke"
+
+C:\Users\user>git config --global user.email "rutujafirke123@gmail.com"
+
+C:\Users\user>git config --global core.editor Vim
+
+C:\Users\user>git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager-core
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=rutujafirke
+user.email=rutujafirke123@gmail.com
+core.editor=Vim
+
+C:\Users\user>git config --global color.ui.true
+
+C:\Users\user>git gui
+
+C:\Users\user>cd D:\Trainings\gitdemo\demo
+
+C:\Users\user>d:
+
+D:\Trainings\gitdemo\demo>git init
+Initialized empty Git repository in D:/Trainings/gitdemo/demo/.git/
+
+D:\Trainings\gitdemo\demo>git add Connection21-12
+
+D:\Trainings\gitdemo\demo>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   Connection21-12/.classpath
+        new file:   Connection21-12/.project
+        new file:   Connection21-12/.settings/org.eclipse.jdt.core.prefs
+        new file:   Connection21-12/bin/study/assignment/DeleteRow.class
+        new file:   Connection21-12/bin/study/assignment/Product.class
+        new file:   Connection21-12/bin/study/assignment/ProductInfo.class
+        new file:   Connection21-12/bin/study/assignment/UpdateRow.class
+        new file:   Connection21-12/bin/study/assignment/WhereClause.class
+        new file:   Connection21-12/bin/study/jdbc/ClientExample.class
+        new file:   Connection21-12/bin/study/jdbc/ClientExample2.class
+        new file:   Connection21-12/bin/study/jdbc/StaticBlockExample.class
+        new file:   Connection21-12/bin/study/jdbc/StaticBlockUsed.class
+        new file:   Connection21-12/src/study/assignment/DeleteRow.java
+        new file:   Connection21-12/src/study/assignment/Product.java
+        new file:   Connection21-12/src/study/assignment/ProductInfo.java
+        new file:   Connection21-12/src/study/assignment/UpdateRow.java
+        new file:   Connection21-12/src/study/assignment/WhereClause.java
+        new file:   Connection21-12/src/study/jdbc/ClientExample.java
+        new file:   Connection21-12/src/study/jdbc/ClientExample2.java
+        new file:   Connection21-12/src/study/jdbc/StaticBlockExample.java
+
+
+D:\Trainings\gitdemo\demo>cd D:\Trainings\gitdemo\demo1
+
+D:\Trainings\gitdemo\demo1>git init
+Initialized empty Git repository in D:/Trainings/gitdemo/demo1/.git/
+
+D:\Trainings\gitdemo\demo1>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\demo1>git add .
+
+D:\Trainings\gitdemo\demo1>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   C_LinkedList.java
+
+
+D:\Trainings\gitdemo\demo1>git rm --cached C_LinkedList.java
+rm 'C_LinkedList.java'
+
+D:\Trainings\gitdemo\demo1>git rm --cached C_LinkedList.java
+fatal: pathspec 'C_LinkedList.java' did not match any files
+
+D:\Trainings\gitdemo\demo1>git staus
+git: 'staus' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+
+D:\Trainings\gitdemo\demo1>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\demo1>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+        text.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\demo1>git add .*txt
+fatal: pathspec '.*txt' did not match any files
+
+D:\Trainings\gitdemo\demo1>git add *.txt
+
+D:\Trainings\gitdemo\demo1>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   text.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+
+
+D:\Trainings\gitdemo\demo1>git reset text.txt
+
+D:\Trainings\gitdemo\demo1>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+        text.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\demo1>git commit -m "first commit"
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+        text.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\demo1>git log
+fatal: your current branch 'master' does not have any commits yet
+
+D:\Trainings\gitdemo\demo1>git commit -m "first commit"
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+        text.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\demo1>git commit -m
+error: switch `m' requires a value
+
+D:\Trainings\gitdemo\demo1>git commit
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C_LinkedList.java
+        text.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\demo1>git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+
+D:\Trainings\gitdemo\demo1>git add .
+
+D:\Trainings\gitdemo\demo1>git commit -m "add"
+[master (root-commit) 7746b4c] add
+ 2 files changed, 154 insertions(+)
+ create mode 100644 C_LinkedList.java
+ create mode 100644 text.txt
+
+D:\Trainings\gitdemo\demo1>git log
+commit 7746b4c5fc5af3205914bc52bfcedb56441d67c5 (HEAD -> master)
+Author: rutujafirke <rutujafirke123@gmail.com>
+Date:   Wed Jan 12 12:40:57 2022 +0530
+
+    add
+
+D:\Trainings\gitdemo\demo1>git status
+On branch master
+nothing to commit, working tree clean
+
+D:\Trainings\gitdemo\demo1>git log
+commit 7746b4c5fc5af3205914bc52bfcedb56441d67c5 (HEAD -> master)
+Author: rutujafirke <rutujafirke123@gmail.com>
+Date:   Wed Jan 12 12:40:57 2022 +0530
+
+    add
+
+D:\Trainings\gitdemo\demo1>
+----------------------------------------------------------------------------------------------------------------------------------
+Microsoft Windows [Version 10.0.19042.508]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\user> cd D:\Trainings\gitdemo\pullpush2
+
+C:\Users\user>D:
+
+D:\Trainings\gitdemo\pullpush2>git remote -v
+fatal: not a git repository (or any of the parent directories): .git
+
+D:\Trainings\gitdemo\pullpush2>git status
+fatal: not a git repository (or any of the parent directories): .git
+
+D:\Trainings\gitdemo\pullpush2>git init
+Initialized empty Git repository in D:/Trainings/gitdemo/pullpush2/.git/
+
+D:\Trainings\gitdemo\pullpush2>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\pullpush2>git commit
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\pullpush2>git commit -m "first commit"
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\pullpush2>git remote add https://github.com/rutujafirke/dbfood.git
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=(push|fetch)]
+                          set up remote as a mirror to push to or fetch from
+
+
+D:\Trainings\gitdemo\pullpush2>git remote add dbfood https://github.com/rutujafirke/dbfood.git
+
+D:\Trainings\gitdemo\pullpush2>git remote -v
+dbfood  https://github.com/rutujafirke/dbfood.git (fetch)
+dbfood  https://github.com/rutujafirke/dbfood.git (push)
+
+D:\Trainings\gitdemo\pullpush2>git pull dbfood main
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), 3.01 KiB | 4.00 KiB/s, done.
+From https://github.com/rutujafirke/dbfood
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> dbfood/main
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood main
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/rutujafirke/dbfood.git'
+
+D:\Trainings\gitdemo\pullpush2>git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\pullpush2>git commit -m "committed"
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+D:\Trainings\gitdemo\pullpush2>git add .
+
+D:\Trainings\gitdemo\pullpush2>git commit -m "commitedd"
+[master 90a8ca1] commitedd
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.txt
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood
+info: please complete authentication in your browser...
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 310 bytes | 310.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/rutujafirke/dbfood/pull/new/master
+remote:
+To https://github.com/rutujafirke/dbfood.git
+ * [new branch]      master -> master
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood main -f
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/rutujafirke/dbfood.git'
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood head:main
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/rutujafirke/dbfood.git
+   39e7272..90a8ca1  head -> main
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood head:main
+Everything up-to-date
+
+D:\Trainings\gitdemo\pullpush2>git add .
+
+D:\Trainings\gitdemo\pullpush2>git commit -m "commited"
+[master 14ef1cf] commited
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 hello.txt
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 255 bytes | 255.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/rutujafirke/dbfood.git
+   90a8ca1..14ef1cf  master -> master
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood master
+Everything up-to-date
+
+D:\Trainings\gitdemo\pullpush2>git add .
+
+D:\Trainings\gitdemo\pullpush2>git commit -m "comitted"
+[master 36fc640] comitted
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 newfile.txt
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 298 bytes | 298.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/rutujafirke/dbfood.git
+   14ef1cf..36fc640  master -> master
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood master
+Everything up-to-date
+
+D:\Trainings\gitdemo\pullpush2>git push dbfood head:main
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/rutujafirke/dbfood.git
+   90a8ca1..36fc640  head -> main
+
+D:\Trainings\gitdemo\pullpush2>
