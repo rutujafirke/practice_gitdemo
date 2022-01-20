@@ -1,0 +1,332 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\user> docker --version
+Docker version 20.10.12, build e91ed57
+PS C:\Users\user> docker run ubuntu
+PS C:\Users\user> docker run -t -d ubuntu
+61e5af3436ea744e185f65828d820b52b18327d5cc0f194d5d28d7f22f493e1c
+PS C:\Users\user> docker images
+REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+jenkins/jenkins          latest    b3febfc71dcd   6 days ago     442MB
+ubuntu                   latest    d13c942271d6   12 days ago    72.8MB
+docker/getting-started   latest    26d80cd96d69   6 weeks ago    28.5MB
+hello-world              latest    feb5d9fea6a5   3 months ago   13.3kB
+PS C:\Users\user> docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED              STATUS                     PORTS                NAMES
+61e5af3436ea   ubuntu                   "bash"                   About a minute ago   Up About a minute                               zen_morse
+5fb265b4ae00   ubuntu                   "bash"                   2 minutes ago        Exited (0) 2 minutes ago                        nifty_fermi
+01fc3525976f   docker/getting-started   "/docker-entrypoint.…"   3 hours ago          Exited (255) 2 hours ago   0.0.0.0:80->80/tcp   jovial_goldstine
+ab14e4bc11ec   hello-world              "/hello"                 4 hours ago          Exited (0) 4 hours ago                          admiring_tesla
+PS C:\Users\user>
+PS C:\Users\user> docker exec it 61e5af3436ea  bash
+Error: No such container: it
+PS C:\Users\user> #echo hello
+PS C:\Users\user> docker exec -it 61e5af3436ea  bash
+root@61e5af3436ea:/# echo hello
+hello
+root@61e5af3436ea:/# exit
+exit
+PS C:\Users\user>
+PS C:\Users\user> docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+PS C:\Users\user> docker stop 61e5af3436ea
+61e5af3436ea
+PS C:\Users\user> docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                      PORTS                NAMES
+20ca378777a0   hello-world              "/hello"                 4 minutes ago    Exited (0) 4 minutes ago                         romantic_edison
+61e5af3436ea   ubuntu                   "bash"                   11 minutes ago   Exited (0) 8 seconds ago                         zen_morse
+5fb265b4ae00   ubuntu                   "bash"                   12 minutes ago   Exited (0) 12 minutes ago                        nifty_fermi
+01fc3525976f   docker/getting-started   "/docker-entrypoint.…"   3 hours ago      Exited (255) 2 hours ago    0.0.0.0:80->80/tcp   jovial_goldstine
+ab14e4bc11ec   hello-world              "/hello"                 4 hours ago      Exited (0) 4 hours ago                           admiring_tesla
+PS C:\Users\user>
+PS C:\Users\user> docker stop 61e5af3436ea
+61e5af3436ea
+PS C:\Users\user> docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                      PORTS                NAMES
+20ca378777a0   hello-world              "/hello"                 4 minutes ago    Exited (0) 4 minutes ago                         romantic_edison
+61e5af3436ea   ubuntu                   "bash"                   11 minutes ago   Exited (0) 8 seconds ago                         zen_morse
+5fb265b4ae00   ubuntu                   "bash"                   12 minutes ago   Exited (0) 12 minutes ago                        nifty_fermi
+01fc3525976f   docker/getting-started   "/docker-entrypoint.…"   3 hours ago      Exited (255) 2 hours ago    0.0.0.0:80->80/tcp   jovial_goldstine
+ab14e4bc11ec   hello-world              "/hello"                 4 hours ago      Exited (0) 4 hours ago                           admiring_tesla
+PS C:\Users\user> docker commit  61e5af3436ea rutujafirke/ubuntu
+sha256:82e82dbb8b62198ae70ed8849e9f665be56b92561691e2058705158fbe90731d
+PS C:\Users\user> docker login
+Authenticating with existing credentials...
+Login Succeeded
+PS C:\Users\user> docker images
+REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
+rutujafirke/ubuntu       latest    82e82dbb8b62   15 minutes ago   72.8MB
+jenkins/jenkins          latest    b3febfc71dcd   6 days ago       442MB
+ubuntu                   latest    d13c942271d6   12 days ago      72.8MB
+docker/getting-started   latest    26d80cd96d69   6 weeks ago      28.5MB
+hello-world              latest    feb5d9fea6a5   3 months ago     13.3kB
+PS C:\Users\user> docker push rutujafirke/ubuntu
+Using default tag: latest
+The push refers to repository [docker.io/rutujafirke/ubuntu]
+cb7daa79d33b: Pushed
+0eba131dffd0: Mounted from library/ubuntu
+latest: digest: sha256:f20444b57a0aa57850298a767a6d50d80272426c51cfdf1ff4aae858c455c63a size: 736
+PS C:\Users\user> docker login
+Authenticating with existing credentials...
+Login Succeeded
+PS C:\Users\user> docker rm   82e82dbb8b62
+Error: No such container: 82e82dbb8b62
+PS C:\Users\user> docker rm 5fb265b4ae00
+5fb265b4ae00
+PS C:\Users\user> docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                      PORTS                NAMES
+20ca378777a0   hello-world              "/hello"                 43 minutes ago   Exited (0) 43 minutes ago                        romantic_edison
+61e5af3436ea   ubuntu                   "bash"                   50 minutes ago   Exited (0) 39 minutes ago                        zen_morse
+01fc3525976f   docker/getting-started   "/docker-entrypoint.…"   4 hours ago      Exited (255) 2 hours ago    0.0.0.0:80->80/tcp   jovial_goldstine
+ab14e4bc11ec   hello-world              "/hello"                 5 hours ago      Exited (0) 5 hours ago                           admiring_tesla
+PS C:\Users\user>
+PS C:\Users\user> docker images
+REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
+rutujafirke/ubuntu       latest    82e82dbb8b62   32 minutes ago   72.8MB
+jenkins/jenkins          latest    b3febfc71dcd   6 days ago       442MB
+ubuntu                   latest    d13c942271d6   12 days ago      72.8MB
+docker/getting-started   latest    26d80cd96d69   6 weeks ago      28.5MB
+hello-world              latest    feb5d9fea6a5   3 months ago     13.3kB
+PS C:\Users\user> docker rmi b3febfc71dcd
+Untagged: jenkins/jenkins:latest
+Untagged: jenkins/jenkins@sha256:53e6ac41ed49fce658086cb30f20f87e7efdd95c81ab41a2fbeb252fa7f2557b
+Deleted: sha256:b3febfc71dcda47d0c9196b98782db6d02338d9d430f1c9a14b8113ac1390421
+Deleted: sha256:7da292c84d08be497d16ad21f29974a5ab37c9f26cdd13bd21e4a16aa3dc2983
+Deleted: sha256:8817cbe0df977c047a62b24601139ba0580d2a9c444804fe5fc6d260f88ec3e7
+Deleted: sha256:7ed4187f02ccc0e3399a46e5018b6eeab766506ac1dc61bdd156d25ef830170a
+Deleted: sha256:4e5784f715a23e0a4fc02ef1152b4378beb80631fadd67fdff9ea2eb6316b9bd
+Deleted: sha256:c8e81e5506f494242552079701ce2e6184bd0d5337847971be00c68b8eae4240
+Deleted: sha256:d69c07870f5a8b31cae247bb6f72c7e3925d34e85d431c080d35e77ffd86ebf7
+Deleted: sha256:889436bea1e99e2e3e8dc9a3c2a80faf1b9ff1c1e3e711cf2ecf04c492e4084e
+Deleted: sha256:fcf5d0e5b938457b9fba6ae4e635108761540570cdc9a94925a125cabaeebc70
+Deleted: sha256:f73429312c025ec72f25bd2a778f1fe98b58efb77ad078841e4f99b2a2d203ea
+Deleted: sha256:4fa65b2274472dc221d672b86a540e43555309a69290634b1bc6ede18b31d7c8
+Deleted: sha256:10f592175d73ab56729cd452d5d5cc6a89a4cf7cf593437c017b648253c4c79a
+Deleted: sha256:ec21896e13dc9e85672a5c8f0172258d33db568b1346b4e2036f3b2489fdea94
+Deleted: sha256:3045e7bee74e445e7aa70e56a3e9a5bfc50b8d671255d21a80332cc12607a631
+Deleted: sha256:f58828cc3ec4a0b673649985c498123c23541ad374c0db983acd75bc37d0d620
+Deleted: sha256:383fc8835c4fd0ed7abc7190e7af2ed01f419b7921f3279aacb7df2cc68d9724
+Deleted: sha256:f7dec6ec0d49657d0cd2f7a453cf565e50b49fd8f47ffa37db80793ca7b01dc5
+Deleted: sha256:11936051f93baf5a4fb090a8fa0999309b8173556f7826598e235e8a82127bce
+PS C:\Users\user> docker images
+REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
+rutujafirke/ubuntu       latest    82e82dbb8b62   33 minutes ago   72.8MB
+ubuntu                   latest    d13c942271d6   12 days ago      72.8MB
+docker/getting-started   latest    26d80cd96d69   6 weeks ago      28.5MB
+hello-world              latest    feb5d9fea6a5   3 months ago     13.3kB
+PS C:\Users\user>
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\user> docker login
+Authenticating with existing credentials...
+Login Succeeded
+PS C:\Users\user> cd D:\IET\getting-started-master\app
+PS D:\IET\getting-started-master\app> docker built -t java-nodejs-app .
+unknown shorthand flag: 't' in -t
+See 'docker --help'.
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           "C:\\Users\\user\\.docker")
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "C:\\Users\\user\\.docker\\ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "C:\\Users\\user\\.docker\\cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "C:\\Users\\user\\.docker\\key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.7.1)
+  compose*    Docker Compose (Docker Inc., v2.2.3)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.16.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+
+[+] Building 90.0s (10/10) FINISHED
+ => [internal] load build definition from Dockerfile                                               0.1s
+ => => transferring dockerfile: 153B                                                               0.0s
+ => [internal] load .dockerignore                                                                  0.0s
+ => => transferring context: 2B                                                                    0.0s
+ => [internal] load metadata for docker.io/library/node:12-alpine                                  5.4s
+ => [auth] library/node:pull token for registry-1.docker.io                                        0.0s
+ => [1/4] FROM docker.io/library/node:12-alpine@sha256:c3e7817c8fd124f1597cd66124d247db8e138e8ef  16.5s
+ => => resolve docker.io/library/node:12-alpine@sha256:c3e7817c8fd124f1597cd66124d247db8e138e8ef3  0.0s
+ => => sha256:5cbf7b125ab0155df10b7fc86252b000d8b01c508da39c069a0c3d07db03a673 1.16kB / 1.16kB     0.0s
+ => => sha256:8a6e486e98173d6c728ad9e345621090a6c1911863a6c90e689c5e6373fe65a6 6.53kB / 6.53kB     0.0s
+ => => sha256:59bf1c3509f33515622619af21ed55bbe26d24913cedbca106468a5fb37a50c3 2.82MB / 2.82MB     3.5s
+ => => sha256:56ea1bcfc51681a204ae05c69001c5b7d72bf091d2bfa06f18db72f380ab7494 24.94MB / 24.94MB  10.3s
+ => => sha256:55284a5c72ce1ed6a1c6a6601d67bdabdb0fa7d111921adca44238fdb08c71af 2.37MB / 2.37MB     1.2s
+ => => sha256:c3e7817c8fd124f1597cd66124d247db8e138e8ef311ba085b7104d900129d0b 1.43kB / 1.43kB     0.0s
+ => => sha256:a9867c49b9ebe6a7af9f0066c7b4fbdd083d658335b83c57c57f368abb43de92 453B / 453B         1.8s
+ => => extracting sha256:59bf1c3509f33515622619af21ed55bbe26d24913cedbca106468a5fb37a50c3          0.8s
+ => => extracting sha256:56ea1bcfc51681a204ae05c69001c5b7d72bf091d2bfa06f18db72f380ab7494          4.9s
+ => => extracting sha256:55284a5c72ce1ed6a1c6a6601d67bdabdb0fa7d111921adca44238fdb08c71af          0.5s
+ => => extracting sha256:a9867c49b9ebe6a7af9f0066c7b4fbdd083d658335b83c57c57f368abb43de92          0.0s
+ => [internal] load build context                                                                  0.9s
+ => => transferring context: 4.61MB                                                                0.9s
+ => [2/4] WORKDIR /app                                                                             0.9s
+ => [3/4] COPY . .                                                                                 0.1s
+ => [4/4] RUN yarn install --production                                                           61.1s
+ => exporting to image                                                                             5.6s
+ => => exporting layers                                                                            5.6s
+ => => writing image sha256:1e015add6435cdf2711c79859685c0759009df1f04d130734ce4e480a8918edd       0.0s
+ => => naming to docker.io/library/java-nodejs-app                                                 0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+PS D:\IET\getting-started-master\app> docker run -dp 3000:3000 java-nodejs-app
+3c28a8323ae190c0eea2814f2890bb5bc65d0435c3230295d8b6504927b8b012
+PS D:\IET\getting-started-master\app> docker images
+REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
+java-nodejs-app          latest    1e015add6435   23 minutes ago   182MB
+rutujafirke/ubuntu       latest    82e82dbb8b62   19 hours ago     72.8MB
+ubuntu                   <none>    d13c942271d6   13 days ago      72.8MB
+ubuntu                   latest    b3534bbfe0cc   13 days ago      72.8MB
+docker/getting-started   latest    26d80cd96d69   6 weeks ago      28.5MB
+hello-world              latest    feb5d9fea6a5   3 months ago     13.3kB
+PS D:\IET\getting-started-master\app> docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS                      PORTS                    NAMES
+3c28a8323ae1   java-nodejs-app          "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes                0.0.0.0:3000->3000/tcp   hopeful_lederberg
+20ca378777a0   hello-world              "/hello"                 20 hours ago    Exited (0) 20 hours ago                              romantic_edison
+61e5af3436ea   d13c942271d6             "bash"                   20 hours ago    Exited (0) 19 hours ago                              zen_morse
+01fc3525976f   docker/getting-started   "/docker-entrypoint.…"   23 hours ago    Exited (255) 21 hours ago   0.0.0.0:80->80/tcp       jovial_goldstine
+ab14e4bc11ec   hello-world              "/hello"                 23 hours ago    Exited (0) 23 hours ago                              admiring_tesla
+PS D:\IET\getting-started-master\app> docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS         PORTS                    NAMES
+3c28a8323ae1   java-nodejs-app   "docker-entrypoint.s…"   4 minutes ago   Up 4 minutes   0.0.0.0:3000->3000/tcp   hopeful_lederberg
+PS D:\IET\getting-started-master\app> docker stop 3c28a8323ae1
+3c28a8323ae1
+PS D:\IET\getting-started-master\app>
+
+PS D:\IET\getting-started-master\app> docker images
+REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
+java-nodejs-app          latest    1e015add6435   55 minutes ago   182MB
+rutujafirke/ubuntu       latest    82e82dbb8b62   20 hours ago     72.8MB
+ubuntu                   latest    b3534bbfe0cc   13 days ago      72.8MB
+ubuntu                   <none>    d13c942271d6   13 days ago      72.8MB
+docker/getting-started   latest    26d80cd96d69   6 weeks ago      28.5MB
+hello-world              latest    feb5d9fea6a5   3 months ago     13.3kB
+PS D:\IET\getting-started-master\app> docker run -it -d centos
+Unable to find image 'centos:latest' locally
+latest: Pulling from library/centos
+a1d0c7532777: Pull complete
+Digest: sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
+Status: Downloaded newer image for centos:latest
+00f4dae4a71ca0241d9d3952a69e08fd0b0b6eacb80b09dd356e9bdae7e1b6f7
+PS D:\IET\getting-started-master\app> docker run -it -d centos
+b00c2f4b72a0be1c76f9b854bca24ce044c6d198c18281b4f5e0e4e098abe740
+PS D:\IET\getting-started-master\app> docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                      PORTS                NAMES
+b00c2f4b72a0   centos                   "/bin/bash"              9 seconds ago    Up 7 seconds                                     stupefied_kalam
+00f4dae4a71c   centos                   "/bin/bash"              37 seconds ago   Up 33 seconds                                    optimistic_goldwasser
+3c28a8323ae1   java-nodejs-app          "docker-entrypoint.s…"   36 minutes ago   Exited (0) 31 minutes ago                        hopeful_lederberg
+20ca378777a0   hello-world              "/hello"                 20 hours ago     Exited (0) 20 hours ago                          romantic_edison
+61e5af3436ea   d13c942271d6             "bash"                   20 hours ago     Exited (0) 20 hours ago                          zen_morse
+01fc3525976f   docker/getting-started   "/docker-entrypoint.…"   23 hours ago     Exited (255) 22 hours ago   0.0.0.0:80->80/tcp   jovial_goldstine
+ab14e4bc11ec   hello-world              "/hello"                 24 hours ago     Exited (0) 24 hours ago                          admiring_tesla
+PS D:\IET\getting-started-master\app> docker exec -t b00c2f4b72a0 /bin/bash
+[root@b00c2f4b72a0 /]#exit
+exit
+PS D:\IET\getting-started-master\app> docker stop b00c2f4b72a0
+b00c2f4b72a0
+PS D:\IET\getting-started-master\app>
